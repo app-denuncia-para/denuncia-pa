@@ -1,0 +1,31 @@
+name: denuncia_pa
+description: Aplicativo de denúncia para o estado do Pará.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  lucide_icons: ^0.257.0
+  url_launcher: ^6.1.0
+  image_picker: ^0.8.7+3
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  assets:
+    - assets/images/image.png
+    - assets/images/capa.png
+    - assets/images/capa01.png
+    - assets/images/logo_para.png
+    - assets/images/onboarding1.png
+    - assets/images/onboarding3.png
+  uses-material-design: true

@@ -14,7 +14,7 @@ Detran, o Ibama e a Defesa Civil, tudo em um só lugar.
 
 - Luan Levi Barbosa de Carvalho
 
-- Davi Serrão Lima
+- Davi Serrão Lima (Programador/Documentador)
 
 ## Tecnologias Utilizadas
 

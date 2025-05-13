@@ -1,6 +1,6 @@
-# denuncia_pa
+# Denúncia Pará
 
-A new Flutter project.
+Breve descrição do que o aplicativo faz e quais problemas ele resolve.
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-# Denúncia Pará
+# 📱 Denúncia Pará – Segurança e Emergência
 
 Quando estamos em uma emergência, cada segundo é essencial para salvar vidas. Foi 
 pensando nisso que criamos o Denúncia Pará, um jeito rápido e fácil de entrar em 
@@ -32,10 +32,42 @@ Em suma, o desenvolvimento deste aplicativo se fundamenta na necessidade de ofer
 
 ## Funcionalidades
 
-- **Lista de Funcionalidades**: Detalhe as funcionalidades principais que o aplicativo oferece. Por exemplo:
-  - Para o aplicativo "SOS Emergência", a funcionalidade pode ser "Acionar bombeiros com localização automática".
-  - Para "Rastreador de Atividades Físicas", uma funcionalidade pode ser "Rastreamento de atividades físicas com cálculo de calorias queimadas".
-- **Funcionalidades Futuras**: Caso haja algum recurso planejado para uma futura atualização, mencione-o.
+# 📱 App de Denúncia – Segurança e Emergência
+
+Este aplicativo foi desenvolvido com o objetivo de facilitar o acesso da população aos principais órgãos de segurança e emergência, permitindo denúncias rápidas, chamadas de emergência e envio de dúvidas diretamente pelo celular.
+
+## 🚨 Funcionalidades
+
+### 🔷 Polícia Militar
+- 📄 **Formulário de Denúncia**: Envio de relatos de forma prática e segura.
+- 📞 **Ligação de Emergência**: Contato direto com a PM.
+- 📝 **Boletim de Ocorrência Online**: Acesso rápido ao serviço oficial.
+- 🗺️ **Mapa de Delegacias**: Visualização das delegacias mais próximas com base na localização do usuário.
+- ❓ **Área de Dúvidas**: Canal para envio de perguntas relacionadas aos serviços da PM.
+
+### 🟢 SAMU
+- 📞 **Ligação de Emergência**: Chamada imediata para atendimentos médicos urgentes.
+- 📄 **Formulário de Emergência**: Relato de situações de saúde para triagem e orientação.
+- ❓ **Dúvidas Frequentes**: Perguntas já respondidas e campo para dúvidas específicas.
+
+### 🔥 Corpo de Bombeiros
+- 📞 **Ligação de Emergência**: Contato direto com os bombeiros.
+- 📄 **Formulário de Emergência**: Relato de incêndios, acidentes, resgates e outras situações.
+- ❓ **Área de Dúvidas**: Informações úteis e perguntas frequentes respondidas.
+
+### 🟡 Outros Órgãos
+A aba “Outros” reúne diversos órgãos, todos com:
+- 📄 **Formulário de Relato**: Envio de denúncias ou comunicações específicas.
+- 📞 **Ligação de Emergência**: Contato telefônico direto com o órgão.
+
+**Órgãos incluídos:**
+- Polícia Federal  
+- Polícia Rodoviária Federal  
+- IBAMA  
+- Defesa Civil  
+- DETRAN  
+- ANVISA  
+
 
 ## Interface e Design
 

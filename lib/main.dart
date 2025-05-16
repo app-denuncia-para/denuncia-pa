@@ -212,193 +212,302 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
+  // 1. Modal de Notificações
+  void _showNotificationsModal(BuildContext context) {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 360;
 
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        title: const Text(
-          'DenunciePA',
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      backgroundColor: Colors.white,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.fromLTRB(
+              isSmallScreen ? 16 : 20,
+              isSmallScreen ? 16 : 20,
+              isSmallScreen ? 16 : 20,
+              isSmallScreen ? 30 : 40),
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Notificações',
+                    style: TextStyle(
+                      fontSize: isSmallScreen ? 20 : 24,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close, size: isSmallScreen ? 24 : 28),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+              SizedBox(height: isSmallScreen ? 12 : 16),
+              Expanded(
+                child: ListView(
+                  children: [
+                    _buildNotificationItem(
+                      context,
+                      title: 'Denúncia registrada',
+                      message: 'Sua denúncia foi recebida e está em análise',
+                      time: 'Hoje, 10:30',
+                      isRead: false,
+                    ),
+                    _buildNotificationItem(
+                      context,
+                      title: 'Atualização do sistema',
+                      message: 'Nova versão do aplicativo disponível',
+                      time: 'Ontem, 14:15',
+                      isRead: true,
+                    ),
+                    _buildNotificationItem(
+                      context,
+                      title: 'Delegacia mais próxima',
+                      message:
+                          'Encontramos uma delegacia próxima à sua localização',
+                      time: '12/05/2024, 09:45',
+                      isRead: true,
+                    ),
+                    _buildNotificationItem(
+                      context,
+                      title: 'Dicas de segurança',
+                      message:
+                          'Confira nossas novas dicas de segurança pessoal',
+                      time: '10/05/2024, 16:20',
+                      isRead: true,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildNotificationItem(
+    BuildContext context, {
+    required String title,
+    required String message,
+    required String time,
+    required bool isRead,
+  }) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: isRead
+          ? Colors.grey[50]
+          : Theme.of(context).colorScheme.primary.withOpacity(0.05),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        leading: Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.notifications,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+        title: Text(
+          title,
           style: TextStyle(
-            fontWeight: FontWeight.w800,
-            fontSize: 24,
-            color: Colors.white,
+            fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Badge(
-              smallSize: 8,
-              backgroundColor: Colors.amber[700],
-              child: const Icon(Icons.notifications_outlined, size: 26),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(message),
+            const SizedBox(height: 4),
+            Text(
+              time,
+              style: TextStyle(
+                fontSize: 12,
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              ),
             ),
-            onPressed: () {},
+          ],
+        ),
+        trailing: !isRead
+            ? Container(
+                width: 10,
+                height: 10,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  shape: BoxShape.circle,
+                ),
+              )
+            : null,
+      ),
+    );
+  }
+
+  // 2. Conteúdo do Menu Denúncias
+  Widget _buildReportsContent(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 360;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Faça sua denúncia',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 22 : 24,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Escolha o tipo de denúncia que deseja realizar',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 14 : 16,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // Cartões de denúncia
+          _buildReportTypeCard(
+            context,
+            title: 'Denúncia Anônima',
+            description: 'Registre uma denúncia sem identificar-se',
+            icon: Icons.security,
+            color: const Color(0xFFD32F2F),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DenunciaAnonimaPage(),
+                ),
+              );
+            },
+          ),
+
+          _buildReportTypeCard(
+            context,
+            title: 'Boletim Online',
+            description: 'Registre ocorrências policiais online',
+            icon: Icons.article,
+            color: const Color(0xFF1976D2),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BoletimOnlinePage(),
+                ),
+              );
+            },
+          ),
+
+          _buildReportTypeCard(
+            context,
+            title: 'Violência Doméstica',
+            description: 'Denuncie casos de violência contra mulheres',
+            icon: Icons.warning,
+            color: const Color(0xFF7B1FA2),
+            onTap: () => _callNumber('180'),
+          ),
+
+          _buildReportTypeCard(
+            context,
+            title: 'Direitos Humanos',
+            description: 'Denuncie violações de direitos humanos',
+            icon: Icons.people,
+            color: const Color(0xFF1976D2),
+            onTap: () => _callNumber('100'),
+          ),
+
+          const SizedBox(height: 20),
+          Text(
+            'Histórico de denúncias',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 18 : 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Nenhuma denúncia recente',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 14 : 16,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(0.8)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+    );
+  }
+
+  Widget _buildReportTypeCard(
+    BuildContext context, {
+    required String title,
+    required String description,
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
+                child: Icon(icon, color: color),
               ),
-              child: Row(
-                children: [
-                  Container(
-                    width: isSmallScreen ? 50 : 60,
-                    height: isSmallScreen ? 50 : 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(0.2),
-                      border: Border.all(
-                          color: Colors.white.withOpacity(0.3), width: 2),
-                    ),
-                    child: Icon(Icons.person_outline,
-                        color: Colors.white, size: isSmallScreen ? 26 : 30),
-                  ),
-                  SizedBox(width: isSmallScreen ? 12 : 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Serviços de Emergência',
-                          style: TextStyle(
-                            fontSize: isSmallScreen ? 16 : 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          'Belém - Pará',
-                          style: TextStyle(
-                            fontSize: isSmallScreen ? 12 : 14,
-                            color: Colors.white.withOpacity(0.9),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: isSmallScreen ? 8 : 12,
-              crossAxisSpacing: isSmallScreen ? 8 : 12,
-              childAspectRatio: isSmallScreen ? 0.85 : 1.0,
-              children: [
-                _buildServiceCard(
-                  context,
-                  icon: Icons.local_police,
-                  title: 'Polícia Militar',
-                  phone: '190',
-                  color: _policeColor,
-                  bgColor: const Color(0xFFE3F2FD),
-                  options: _policeOptions,
-                  serviceName: 'Polícia Militar',
-                ),
-                _buildServiceCard(
-                  context,
-                  icon: Icons.fire_truck,
-                  title: 'Bombeiros',
-                  phone: '193',
-                  color: _firefighterColor,
-                  bgColor: const Color(0xFFFFEBEE),
-                  options: _firefighterOptions,
-                  serviceName: 'Corpo de Bombeiros',
-                ),
-                _buildServiceCard(
-                  context,
-                  icon: Icons.medical_services,
-                  title: 'SAMU',
-                  phone: '192',
-                  color: _samuColor,
-                  bgColor: const Color(0xFFE8F5E9),
-                  options: _samuOptions,
-                  serviceName: 'SAMU',
-                ),
-                _buildServiceCard(
-                  context,
-                  icon: Icons.help_outline,
-                  title: 'Outros',
-                  phone: 'Disque 181',
-                  color: _otherColor,
-                  bgColor: const Color(0xFFF3E5F5),
-                  options: _otherReports,
-                  serviceName: 'Outros Canais',
-                  isOther: true,
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Card(
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              color: Colors.white,
-              child: Padding(
-                padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+              const SizedBox(width: 16),
+              Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      'assets/images/image.png',
-                      height: isSmallScreen ? 50 : 60,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Icon(Icons.security,
-                            size: isSmallScreen ? 35 : 40, color: Colors.grey);
-                      },
-                    ),
-                    const SizedBox(height: 8),
                     Text(
-                      'Governo do Estado do Pará',
+                      title,
                       style: TextStyle(
-                        fontSize: isSmallScreen ? 13 : 14,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withOpacity(0.8),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Denuncie com segurança',
+                      description,
                       style: TextStyle(
-                        fontSize: isSmallScreen ? 11 : 12,
+                        fontSize: 14,
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
@@ -408,11 +517,277 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            ),
-          ],
+              const Icon(Icons.chevron_right),
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(context),
+    );
+  }
+
+  // 3. Conteúdo do Menu Informações
+  Widget _buildInfoContent(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 360;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Informações Úteis',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 22 : 24,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Encontre aqui informações sobre segurança e serviços',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 14 : 16,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // Seção de emergência
+          Text(
+            'Números de Emergência',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 18 : 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          _buildEmergencyNumberItem(
+            context,
+            title: 'Polícia Militar',
+            number: '190',
+            icon: Icons.local_police,
+            color: const Color(0xFF1976D2),
+          ),
+
+          _buildEmergencyNumberItem(
+            context,
+            title: 'Bombeiros',
+            number: '193',
+            icon: Icons.fire_truck,
+            color: const Color(0xFFD32F2F),
+          ),
+
+          _buildEmergencyNumberItem(
+            context,
+            title: 'SAMU',
+            number: '192',
+            icon: Icons.medical_services,
+            color: const Color(0xFF388E3C),
+          ),
+
+          _buildEmergencyNumberItem(
+            context,
+            title: 'Defesa Civil',
+            number: '199',
+            icon: Icons.emergency,
+            color: const Color(0xFFF57C00),
+          ),
+
+          const SizedBox(height: 24),
+
+          // Seção de informações
+          Text(
+            'Dicas de Segurança',
+            style: TextStyle(
+              fontSize: isSmallScreen ? 18 : 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          _buildInfoTipItem(
+            context,
+            title: 'Segurança Pessoal',
+            description: 'Dicas para se proteger em situações de risco',
+            icon: Icons.security,
+          ),
+
+          _buildInfoTipItem(
+            context,
+            title: 'Violência Doméstica',
+            description:
+                'Como identificar e buscar ajuda em casos de violência',
+            icon: Icons.home,
+          ),
+
+          _buildInfoTipItem(
+            context,
+            title: 'Segurança Digital',
+            description: 'Proteja-se contra crimes virtuais e golpes',
+            icon: Icons.lock,
+          ),
+
+          const SizedBox(height: 24),
+
+          // Sobre o app
+          Card(
+            elevation: 0,
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/image.png',
+                    height: 60,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.security, size: 40, color: Colors.grey);
+                    },
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'DenunciePA',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Versão 1.0.0',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.6),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Aplicativo oficial do Governo do Estado do Pará para denúncias e serviços de emergência.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.8),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmergencyNumberItem(
+    BuildContext context, {
+    required String title,
+    required String number,
+    required IconData icon,
+    required Color color,
+  }) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: Colors.grey[50],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        leading: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, color: color),
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+        subtitle: Text(
+          number,
+          style: TextStyle(
+            fontSize: 16,
+            color: color,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.phone),
+          color: color,
+          onPressed: () => _callNumber(number),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoTipItem(
+    BuildContext context, {
+    required String title,
+    required String description,
+    required IconData icon,
+  }) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: Colors.grey[50],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        leading: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, color: Theme.of(context).colorScheme.primary),
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+        subtitle: Text(
+          description,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          ),
+        ),
+        trailing: const Icon(Icons.chevron_right),
+        onTap: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Mais informações sobre: $title'),
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -831,6 +1206,221 @@ class _HomePageState extends State<HomePage> {
           label: 'Informações',
         ),
       ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 360;
+
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: AppBar(
+        title: const Text(
+          'DenunciePA',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 24,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Badge(
+              smallSize: 8,
+              backgroundColor: Colors.amber[700],
+              child: const Icon(Icons.notifications_outlined, size: 26),
+            ),
+            onPressed: () => _showNotificationsModal(context),
+          ),
+        ],
+      ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          // Página inicial
+          SingleChildScrollView(
+            padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Theme.of(context).colorScheme.primary,
+                        Theme.of(context).colorScheme.primary.withOpacity(0.8)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: isSmallScreen ? 50 : 60,
+                        height: isSmallScreen ? 50 : 60,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withOpacity(0.2),
+                          border: Border.all(
+                              color: Colors.white.withOpacity(0.3), width: 2),
+                        ),
+                        child: Icon(Icons.person_outline,
+                            color: Colors.white, size: isSmallScreen ? 26 : 30),
+                      ),
+                      SizedBox(width: isSmallScreen ? 12 : 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Serviços de Emergência',
+                              style: TextStyle(
+                                fontSize: isSmallScreen ? 16 : 18,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Belém - Pará',
+                              style: TextStyle(
+                                fontSize: isSmallScreen ? 12 : 14,
+                                color: Colors.white.withOpacity(0.9),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: isSmallScreen ? 8 : 12,
+                  crossAxisSpacing: isSmallScreen ? 8 : 12,
+                  childAspectRatio: isSmallScreen ? 0.85 : 1.0,
+                  children: [
+                    _buildServiceCard(
+                      context,
+                      icon: Icons.local_police,
+                      title: 'Polícia Militar',
+                      phone: '190',
+                      color: _policeColor,
+                      bgColor: const Color(0xFFE3F2FD),
+                      options: _policeOptions,
+                      serviceName: 'Polícia Militar',
+                    ),
+                    _buildServiceCard(
+                      context,
+                      icon: Icons.fire_truck,
+                      title: 'Bombeiros',
+                      phone: '193',
+                      color: _firefighterColor,
+                      bgColor: const Color(0xFFFFEBEE),
+                      options: _firefighterOptions,
+                      serviceName: 'Corpo de Bombeiros',
+                    ),
+                    _buildServiceCard(
+                      context,
+                      icon: Icons.medical_services,
+                      title: 'SAMU',
+                      phone: '192',
+                      color: _samuColor,
+                      bgColor: const Color(0xFFE8F5E9),
+                      options: _samuOptions,
+                      serviceName: 'SAMU',
+                    ),
+                    _buildServiceCard(
+                      context,
+                      icon: Icons.help_outline,
+                      title: 'Outros',
+                      phone: 'Disque 181',
+                      color: _otherColor,
+                      bgColor: const Color(0xFFF3E5F5),
+                      options: _otherReports,
+                      serviceName: 'Outros Canais',
+                      isOther: true,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Card(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/image.png',
+                          height: isSmallScreen ? 50 : 60,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(Icons.security,
+                                size: isSmallScreen ? 35 : 40,
+                                color: Colors.grey);
+                          },
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Governo do Estado do Pará',
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 13 : 14,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.8),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Denuncie com segurança',
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 11 : 12,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.6),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Página de denúncias
+          _buildReportsContent(context),
+          // Página de informações
+          _buildInfoContent(context),
+        ],
+      ),
+      bottomNavigationBar: _buildBottomNavBar(context),
     );
   }
 }

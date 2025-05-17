@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DenunciePA',
+      title: 'DenúnciaPA',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme(
@@ -652,7 +652,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'DenunciePA',
+                    'DenúnciaPA',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -1217,7 +1217,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text(
-          'DenunciePA',
+          'DenúnciaPA',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 24,

@@ -9,7 +9,7 @@ Em momentos de emergência, cada segundo pode fazer a diferença entre salvar um
 - Rafael Góes Duarte  
 - Marcus Paulo da Silva Baptista  
 - Luan Levi Barbosa de Carvalho  
-- Davi Serrão Lima *(responsável pela programação e documentação)*
+- Davi Serrão Lima *(responsável pela documentação)*
 
 ---
 

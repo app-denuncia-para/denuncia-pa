@@ -1,17 +1,26 @@
 # 📱 Denúncia Pará – Segurança e Emergência
-<img src="assets/images/imagem-do-readme/capa01.png" alt="Capa do Projeto Denúncia Pará" style="border-radius: 5px" />
+<img src="assets/images/imagem-do-readme/capa01.png" alt="Capa do Projeto Denúncia Pará"/>
+
 Em momentos de emergência, cada segundo pode fazer a diferença entre salvar uma vida ou não. Pensando nisso, desenvolvemos o **Denúncia Pará**, um aplicativo simples e direto que reúne os principais serviços de emergência do estado em um único lugar. Nele, é possível acionar rapidamente a Polícia Militar, o Corpo de Bombeiros, o SAMU, além de órgãos como o Detran, Ibama, Defesa Civil, entre outros.
 
 ---
 
-## 👨‍💻 Integrantes do Projeto
+### 👨‍💻Desenvolvedores
 
-- Rafael Góes Duarte  
-- Marcus Paulo da Silva Batista  
-- Luan Levi Barbosa de Carvalho  
-- Davi Serrão Lima *(responsável pela documentação)*
-
+- [Davi Serrão Lima (responsável pela documentação)](https://github.com/D4vi2205)
+- [Rafael Góes Duarte](https://github.com/rafaelgoesti)
+- [Marcus Paulo da Silva Batista](https://github.com/marcusbatistadev)
+- [Luan Levi Barbosa de Carvalho](https://github.com/Luan-carvalho-b)
 ---
+
+### 🛠️ Tecnologias Utilizadas
+
+- <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" width="20" height="20"/> **Flutter** – Framework para desenvolvimento multiplataforma mobile  
+- <img src="https://cdn.simpleicons.org/dart/0175C2" alt="Dart" width="20" height="20"/> **Dart** – Linguagem de programação usada no Flutter  
+- <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" width="20" height="20"/> **Git** – Controle de versão  
+- <img title="VS Code" alt="VS Code" width="20" src="https://raw.githubusercontent.com/github/explore/master/topics/visual-studio-code/visual-studio-code.png" /> **Visual Studio Code / Android Studio** – IDEs utilizadas no desenvolvimento  
+
+- <img src="assets/images/imagem-do-readme/material-design.png" alt="Material Design" width="20" height="20"/> **Material Design** – Guia de estilo para interface do usuário  
 
 ## 🎯 Objetivo do Aplicativo
 
@@ -143,7 +152,6 @@ lib/
 │   └── denuncia.dart
 └── utils/
 ```
-
 
 ## 🚀 Como Executar o Projeto
 

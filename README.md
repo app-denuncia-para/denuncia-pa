@@ -183,6 +183,88 @@ Você pode testar manualmente as funcionalidades principais do app:
 4. Verificar se a localização é exibida corretamente na tela inicial.
 5. Garantir que o design está responsivo em diferentes tamanhos de tela.
 
+# Documentação do Aplicativo DenúnciaPA
+
+## Principais Componentes
+
+### 1. `MyApp` (Classe Principal)
+- **Função**: Configuração inicial do aplicativo
+- **Métodos**:
+  - `build()`: Define o tema global e configurações do MaterialApp
+    - Configura cores, tipografia, cards e botões
+    - Define `SplashScreen` como tela inicial
+
+### 2. `HomePage` (Tela Principal)
+- **Estado**: `_HomePageState` gerencia a navegação e conteúdo
+- **Variáveis Importantes**:
+  - `_selectedIndex`: Controla a aba selecionada (0=Início, 1=Denúncias, 2=Informações)
+  - Listas de opções: `_policeOptions`, `_firefighterOptions`, `_samuOptions`, `_otherReports`
+
+#### Métodos Principais:
+
+##### Navegação
+- `_onItemTapped(int index)`: Alterna entre as abas principais
+
+##### Componentes de Interface
+- `_buildBottomNavBar()`: Cria a barra de navegação inferior
+- `_buildServiceCard()`: Constrói cards de serviços na tela inicial
+- `_buildReportTypeCard()`: Cria cards para tipos de denúncia
+
+##### Modais e Diálogos
+- `_showNotificationsModal()`: Exibe notificações em modal
+- `_showOptionsModal()`: Mostra opções de serviço em modal
+- `_showOtherReports()`: Exibe outros canais de denúncia
+- `_showFaq()`: Mostra diálogo com dúvidas frequentes
+
+##### Funcionalidades
+- `_callNumber(String number)`: Realiza chamadas telefônicas
+- `_handleOptionSelection()`: Gerencia ações das opções selecionadas
+
+##### Conteúdo das Abas
+- `_buildReportsContent()`: Constrói a aba de Denúncias
+- `_buildInfoContent()`: Constrói a aba de Informações
+
+### 3. Páginas Especializadas
+- **DenunciaAnonimaPage**: Formulário para denúncias anônimas
+- **BoletimOnlinePage**: Registro de ocorrências policiais online
+- **DelegaciasProximasPage**: Localização de delegacias próximas
+- **BombeiroEmergenciaPage**: Serviços de emergência dos bombeiros
+
+## Fluxos Principais
+
+### 1. Fluxo de Denúncia
+1. Usuário seleciona "Denúncia Anônima"
+2. Navega para `DenunciaAnonimaPage`
+3. Preenche formulário e envia denúncia
+
+### 2. Fluxo de Emergência
+1. Usuário toca em card de serviço (ex: Bombeiros)
+2. Modal com opções é exibido (`_showOptionsModal`)
+3. Seleção de "Emergência" navega para `BombeiroEmergenciaPage`
+
+### 3. Fluxo de Informações
+1. Usuário acessa aba "Informações"
+2. Visualiza números de emergência e dicas de segurança
+3. Pode ligar diretamente para serviços
+
+## Recursos Importantes
+
+### Temas e Estilo
+- Esquema de cores baseado em vermelho (`#D32F2F`)
+- Tipografia Roboto
+- Cards com bordas arredondadas (16px)
+- Design responsivo para diferentes tamanhos de tela
+
+### Integrações
+- `url_launcher`: Para realizar chamadas telefônicas
+- Números de emergência pré-configurados (190, 192, 193, etc.)
+
+### Componentes Reutilizáveis
+- Cards de serviço padronizados
+- Modais com layout consistente
+- Itens de lista com ícones e cores temáticas
+
+## Estrutura de Arquivos
 
 ## 📄 Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).

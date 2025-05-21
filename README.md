@@ -86,15 +86,15 @@ Logo na primeira tela, o usuário encontra cartões com os principais serviços 
 
 As categorias principais são:
 
-- 👮 Polícia Militar  
-- 🚒 Corpo de Bombeiros  
-- 🚑 SAMU  
-- 🏛️ Outros Órgãos
+- Polícia Militar  
+- Corpo de Bombeiros  
+- SAMU  
+- Outros Órgãos
 
 Além disso:
 
-- 📍 A **localização do usuário** é exibida no topo (por exemplo, *Belém - PA*)  
-- 🏢 A **identidade visual do Governo do Estado** aparece no rodapé, reforçando a legitimidade do app
+- A **localização do usuário** é exibida no topo (por exemplo, *Belém - PA*)  
+- A **identidade visual do Governo do Estado** aparece no rodapé, reforçando a legitimidade do app
 
 ### 📲 Navegação Interna
 

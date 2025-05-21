@@ -15,13 +15,11 @@ Em momentos de emergência, cada segundo pode fazer a diferença entre salvar um
 
 ### 🛠️ Tecnologias Utilizadas
 
-- <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" width="20" height="20"/> **Flutter** – Framework para desenvolvimento multiplataforma mobile  
-- <img src="https://cdn.simpleicons.org/dart/0175C2" alt="Dart" width="20" height="20"/> **Dart** – Linguagem de programação usada no Flutter  
-- <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" width="20" height="20"/> **Git** – Controle de versão  
-- <img title="VS Code" alt="VS Code" width="20" src="https://raw.githubusercontent.com/github/explore/master/topics/visual-studio-code/visual-studio-code.png" /> **Visual Studio Code / Android Studio** – IDEs utilizadas no desenvolvimento  
-
-- <img src="assets/images/imagem-do-readme/material-design.png" alt="Material Design" width="20" height="20"/> **Material Design** – Guia de estilo para interface do usuário  
-
+- <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" width="20" height="20" style="vertical-align: middle; margin-right: 8px;"/> **Flutter** – Framework para desenvolvimento multiplataforma mobile  
+- <img src="https://cdn.simpleicons.org/dart/0175C2" alt="Dart" width="20" height="20" style="vertical-align: middle; margin-right: 8px;"/> **Dart** – Linguagem de programação usada no Flutter  
+- <img title="VS Code" alt="VS Code" width="20" src="https://raw.githubusercontent.com/github/explore/master/topics/visual-studio-code/visual-studio-code.png" style="vertical-align: middle; margin-right: 8px;"/> **Visual Studio Code / Android Studio** – IDEs utilizadas no desenvolvimento  
+- <img src="assets/images/imagem-do-readme/material-design.png" alt="Material Design" width="20" height="20" style="vertical-align: middle; margin-right: 8px;"/> **Material Design** – Guia de estilo para interface do usuário  
+- <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" width="20" height="20" style="vertical-align: middle; margin-right: 8px;"/> **Git** – Controle de versão  
 ## 🎯 Objetivo do Aplicativo
 
 Nosso principal objetivo com este aplicativo é facilitar o acesso da população a serviços de emergência e canais de denúncia, tudo de forma prática, acessível e segura.

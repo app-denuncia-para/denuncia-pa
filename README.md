@@ -43,27 +43,27 @@ O Denúncia Pará oferece diferentes serviços, organizados por órgão respons�
 
 ### 👮 Polícia Militar
 
-- 📝 **Formulário de denúncia**: Envie relatos de forma segura e discreta.  
-- 📞 **Ligação direta**: Chamada imediata para o **190**.  
-- 🧾 **Boletim de ocorrência online**: Acesso direto ao site oficial.  
-- 🗺️ **Mapa de delegacias próximas**: Visualize as unidades mais próximas de acordo com sua localização.  
-- ❓ **Área de dúvidas**: Tire dúvidas sobre os serviços oferecidos pela PM.
+- **Formulário de denúncia**: Envie relatos de forma segura e discreta.  
+- **Ligação direta**: Chamada imediata para o **190**.  
+- **Boletim de ocorrência online**: Acesso direto ao site oficial.  
+- **Mapa de delegacias próximas**: Visualize as unidades mais próximas de acordo com sua localização.  
+- **Área de dúvidas**: Tire dúvidas sobre os serviços oferecidos pela PM.
 
 ---
 
 ### 🚑 SAMU
 
-- 📞 **Ligação direta**: Chamada para emergências médicas.  
-- 📝 **Formulário de emergência**: Relate situações que necessitam de atendimento de saúde.  
-- ℹ️ **Dúvidas frequentes**: Informações úteis sobre o funcionamento do SAMU.
+- **Ligação direta**: Chamada para emergências médicas.  
+- **Formulário de emergência**: Relate situações que necessitam de atendimento de saúde.  
+- **Dúvidas frequentes**: Informações úteis sobre o funcionamento do SAMU.
 
 ---
 
 ### 🚒 Corpo de Bombeiros
 
-- 📞 **Ligação direta**: Contato com os bombeiros para casos de incêndios, acidentes e resgates.  
-- 📝 **Formulário de emergência**: Relato detalhado da ocorrência.  
-- ❓ **Área de dúvidas**: Informações e perguntas comuns sobre o serviço.
+- **Ligação direta**: Contato com os bombeiros para casos de incêndios, acidentes e resgates.  
+- **Formulário de emergência**: Relato detalhado da ocorrência.  
+- **Área de dúvidas**: Informações e perguntas comuns sobre o serviço.
 
 ---
 
@@ -71,17 +71,8 @@ O Denúncia Pará oferece diferentes serviços, organizados por órgão respons�
 
 Além dos serviços estaduais, o app também conecta o usuário a outras instituições de segurança e fiscalização:
 
-- 🕵️ Polícia Federal  
-- 🚓 Polícia Rodoviária Federal  
-- 🌿 IBAMA  
-- 🛡️ Defesa Civil  
-- 🚗 DETRAN  
-- 💊 ANVISA
+- Polícia Federal, Polícia Rodoviária Federal, IBAMA, Defesa Civil, DETRAN e ANVISA são alguns dos órgãos disponíveis. Para todos eles, há opções de **Formulário de relato** e **Ligação direta**.
 
-Para todos eles, há opções de:
-
-- 📝 **Formulário de relato**  
-- 📞 **Ligação direta**
 
 ---
 
@@ -120,11 +111,7 @@ A navegação é feita por uma **barra inferior** com ícones para:
 
 ## 🎨 Decisões de Design
 
-- 🎯 Cada serviço tem uma **cor e um ícone próprios**, para facilitar a identificação rápida.  
-- 🧱 A interface é **limpa e organizada em blocos**, o que melhora a legibilidade.  
-- 📱 Tudo foi pensado para funcionar bem em **diferentes tamanhos de tela** e **níveis de habilidade com tecnologia**.  
-- 🗣️ Os textos são **objetivos**, e os botões **bem posicionados**.
-
+Cada serviço tem uma **cor e um ícone próprios** para facilitar a identificação rápida. A interface é **limpa e organizada em blocos**, o que melhora a legibilidade. Tudo foi pensado para funcionar bem em **diferentes tamanhos de tela** e **níveis de habilidade com tecnologia**. 🗣️ Os textos são **objetivos** e os botões **bem posicionados**.
 > Nosso foco foi criar uma experiência **simples, mas eficiente** — especialmente em situações onde **tempo e clareza são essenciais**.
 
 ## 📂 Estrutura do Projeto
@@ -183,88 +170,86 @@ Você pode testar manualmente as funcionalidades principais do app:
 4. Verificar se a localização é exibida corretamente na tela inicial.
 5. Garantir que o design está responsivo em diferentes tamanhos de tela.
 
-# Documentação do Aplicativo DenúnciaPA
+## 📱 Documentação do Aplicativo DenúnciaPA
 
-## Principais Componentes
+### 🛠️ Principais Componentes
 
-### 1. `MyApp` (Classe Principal)
+### ⚙️ `MyApp` (Classe Principal)
 - **Função**: Configuração inicial do aplicativo
 - **Métodos**:
   - `build()`: Define o tema global e configurações do MaterialApp
     - Configura cores, tipografia, cards e botões
     - Define `SplashScreen` como tela inicial
 
-### 2. `HomePage` (Tela Principal)
+### 🏠 `HomePage` (Tela Principal)
 - **Estado**: `_HomePageState` gerencia a navegação e conteúdo
 - **Variáveis Importantes**:
   - `_selectedIndex`: Controla a aba selecionada (0=Início, 1=Denúncias, 2=Informações)
   - Listas de opções: `_policeOptions`, `_firefighterOptions`, `_samuOptions`, `_otherReports`
 
-#### Métodos Principais:
+#### 🔄 Métodos Principais:
 
-##### Navegação
+##### 🧭 Navegação
 - `_onItemTapped(int index)`: Alterna entre as abas principais
 
-##### Componentes de Interface
+##### 🎨 Componentes de Interface
 - `_buildBottomNavBar()`: Cria a barra de navegação inferior
 - `_buildServiceCard()`: Constrói cards de serviços na tela inicial
 - `_buildReportTypeCard()`: Cria cards para tipos de denúncia
 
-##### Modais e Diálogos
+##### 🗨️ Modais e Diálogos
 - `_showNotificationsModal()`: Exibe notificações em modal
 - `_showOptionsModal()`: Mostra opções de serviço em modal
 - `_showOtherReports()`: Exibe outros canais de denúncia
 - `_showFaq()`: Mostra diálogo com dúvidas frequentes
 
-##### Funcionalidades
+##### ⚡ Funcionalidades
 - `_callNumber(String number)`: Realiza chamadas telefônicas
 - `_handleOptionSelection()`: Gerencia ações das opções selecionadas
 
-##### Conteúdo das Abas
+##### 📂 Conteúdo das Abas
 - `_buildReportsContent()`: Constrói a aba de Denúncias
 - `_buildInfoContent()`: Constrói a aba de Informações
 
-### 3. Páginas Especializadas
+### 📄 Páginas Especializadas
 - **DenunciaAnonimaPage**: Formulário para denúncias anônimas
 - **BoletimOnlinePage**: Registro de ocorrências policiais online
 - **DelegaciasProximasPage**: Localização de delegacias próximas
 - **BombeiroEmergenciaPage**: Serviços de emergência dos bombeiros
 
-## Fluxos Principais
+## 🔄 Fluxos Principais
 
-### 1. Fluxo de Denúncia
+### 1️⃣ Fluxo de Denúncia
 1. Usuário seleciona "Denúncia Anônima"
 2. Navega para `DenunciaAnonimaPage`
 3. Preenche formulário e envia denúncia
 
-### 2. Fluxo de Emergência
+### 2️⃣ Fluxo de Emergência
 1. Usuário toca em card de serviço (ex: Bombeiros)
 2. Modal com opções é exibido (`_showOptionsModal`)
 3. Seleção de "Emergência" navega para `BombeiroEmergenciaPage`
 
-### 3. Fluxo de Informações
+### 3️⃣ Fluxo de Informações
 1. Usuário acessa aba "Informações"
 2. Visualiza números de emergência e dicas de segurança
 3. Pode ligar diretamente para serviços
 
-## Recursos Importantes
+## 💎 Recursos Importantes
 
-### Temas e Estilo
+### 🎨 Temas e Estilo
 - Esquema de cores baseado em vermelho (`#D32F2F`)
 - Tipografia Roboto
 - Cards com bordas arredondadas (16px)
 - Design responsivo para diferentes tamanhos de tela
 
-### Integrações
+### 🔗 Integrações
 - `url_launcher`: Para realizar chamadas telefônicas
 - Números de emergência pré-configurados (190, 192, 193, etc.)
 
-### Componentes Reutilizáveis
+### ♻️ Componentes Reutilizáveis
 - Cards de serviço padronizados
 - Modais com layout consistente
 - Itens de lista com ícones e cores temáticas
-
-## Estrutura de Arquivos
 
 ## 📄 Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).

@@ -103,9 +103,9 @@ Tudo é padronizado, para que a pessoa **não precise reaprender a usar o app** 
 
 A navegação é feita por uma **barra inferior** com ícones para:
 
-- 🏠 Início  
-- 📋 Ocorrências  
-- ℹ️ Informações
+- Início  
+- Ocorrências  
+- Informações
 
 ---
 

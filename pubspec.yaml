@@ -35,4 +35,5 @@ flutter:
     - assets/images/logo_para.png
     - assets/images/onboarding1.png
     - assets/images/onboarding3.png
+    - assets/images/app_icon.png
   uses-material-design: true

@@ -14,7 +14,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<Map<String, String>> onboardingData = [
     {
-      "image": "assets/images/onboarding3.png",
+      "image": "assets/images/app_icon.png",
       "title": "Bem-vindo ao DenúnciaPA",
       "description":
           "O aplicativo oficial para denúncias anônimas no Pará. Sua identidade será preservada enquanto você ajuda a combater crimes.",

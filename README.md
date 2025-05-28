@@ -251,5 +251,19 @@ Você pode testar manualmente as funcionalidades principais do app:
 - Modais com layout consistente
 - Itens de lista com ícones e cores temáticas
 
+## ⚠️ Limitações 
+
+### Necessidade de Conexão com a Internet
+A maior parte das funcionalidades do app — como formulários de denúncia, mapas e acesso a links externos — exige conexão ativa com a internet. Em locais sem cobertura, o uso do app pode ser comprometido.
+
+### Cobertura Geográfica Focada no Estado do Pará
+Embora alguns serviços federais estejam incluídos, o foco principal do aplicativo são os órgãos estaduais do Pará. Usuários fora desse estado podem não encontrar suporte adequado.
+
+### Não Substitui Atendimento Presencial
+Em casos graves, o app não deve ser considerado substituto de atendimento direto ou presencial. É uma ferramenta auxiliar para agilizar o contato, não para resolver a emergência por completo.
+
+### Cobertura Limitada de Tipos de Emergência
+O app oferece suporte apenas aos principais tipos de emergência — como polícia, bombeiros, SAMU e alguns órgãos federais. Situações específicas como violência doméstica, desastres ambientais complexos, ou suporte psicológico não possuem atendimento dedicado na plataforma.
+
 ## 📄 Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).

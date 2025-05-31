@@ -7,7 +7,7 @@ Em momentos de emergência, cada segundo pode fazer a diferença entre salvar um
 
 ### 👨‍💻Desenvolvedores
 
-- [Davi Serrão Lima (responsável pela documentação)](https://github.com/D4vi2205)
+- [Davi Serrão Lima](https://github.com/D4vi2205)
 - [Rafael Góes Duarte](https://github.com/rafaelgoesti)
 - [Marcus Paulo da Silva Batista](https://github.com/marcusbatistadev)
 - [Luan Levi Barbosa de Carvalho](https://github.com/Luan-carvalho-b)
